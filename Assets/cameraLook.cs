@@ -30,10 +30,10 @@ public class cameraLook : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-              //  if (hit.collider.gameObject.GetComponent<breakable>() != null)
-               // {
-              //      hit.collider.gameObject.GetComponent<breakable>().damage(damage, playerBody.gameObject);
-              //  }
+               if (hit.collider.gameObject.GetComponent<breakable>() != null)
+               {
+                    hit.collider.gameObject.GetComponent<breakable>().damage(damage, playerBody.gameObject);
+               }
             }
         }
     }

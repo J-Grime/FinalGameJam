@@ -65,7 +65,7 @@ public class HotBar : MonoBehaviour {
             }
             CheckSwitch(selectedSpace);
         }//scrolling up
-        spacetext.text = "count:" + selectedSpace.ToString();
+        spacetext.text = "count:" + (selectedSpace+1).ToString();
 
         if (Input.GetKey("1")) { lastSpace = selectedSpace; selectedSpace = 0; CheckSwitch(lastSpace); }
         if (Input.GetKey("2")) { lastSpace = selectedSpace; selectedSpace = 1; CheckSwitch(lastSpace); }
