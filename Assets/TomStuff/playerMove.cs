@@ -6,7 +6,9 @@ public class playerMove : MonoBehaviour
 {
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
-    [SerializeField] private float movementSpeed;
+    [SerializeField] private float walkSpeed;
+    [SerializeField] private float sprintSpeed;
+    private float movementSpeed;
 
     private CharacterController charController;
 
@@ -30,6 +32,15 @@ public class playerMove : MonoBehaviour
     {
         grounded = charController.isGrounded;
         PlayerMovement();
+
+        if (Input.GetKey(sprintKey))
+        {
+            movementSpeed = sprintSpeed;
+        }
+        else
+        {
+            movementSpeed = walkSpeed;
+        }
     }
 
   
