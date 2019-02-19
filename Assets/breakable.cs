@@ -20,6 +20,6 @@ public abstract class breakable : health {
     {
         hitPoints -= hitDamage;
         Debug.Log("hit");
-     //   player.GetComponent<InventoryManager>().itemPickup(drop);
+        player.GetComponent<InventoryManager>().itemPickup(drop);
     }
 }
