@@ -5,11 +5,13 @@ using UnityEngine;
 public class buildingPlacement : MonoBehaviour {
 
     public GameObject building;
+
+    public float height;
     public float distance;
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKey(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.T))
         {
             placeBuilding(building);
         }
@@ -17,7 +19,10 @@ public class buildingPlacement : MonoBehaviour {
 
     void placeBuilding(GameObject building)
     {
-        GameObject newBuilding = Instantiate(building, transform.position + transform.forward * distance, transform.rotation);
+        Vector3 temp = transform.position + transform.forward * distance;
+        Vector3 loc = new Vector3(temp.x, temp.y + height, temp.z);
+
+        GameObject newBuilding = Instantiate(building, loc, transform.rotation);
         newBuilding.transform.parent = transform;
     }
 
