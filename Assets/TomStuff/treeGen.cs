@@ -19,7 +19,7 @@ public class treeGen : MonoBehaviour
         Vector3 randPoint = new Vector3(posX, transform.position.y, posZ);
 
         if (Physics.Raycast(randPoint, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
-        {
+        { 
             if (hit.collider.gameObject.tag == "ground")
             {
                 newTree = Instantiate(baseTree, new Vector3(hit.point.x, hit.point.y-2, hit.point.z), transform.rotation);
