@@ -8,23 +8,55 @@ public class buildingPlacement : MonoBehaviour {
 
     public float height;
     public float distance;
-	
-	// Update is called once per frame
-	void Update () {
+
+    private buildingHeightCheck BHC;
+
+    RaycastHit hit;
+
+    GameObject newBuilding;
+
+    private void Start()
+    {
+        BHC = building.GetComponent<buildingHeightCheck>();
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            placeBuilding(building);
+            displayBuilding(building);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            Debug.Log(BHC.canPlace);
+            if (BHC.canPlace)
+            {
+                placeBuilding(building, newBuilding.transform.position);
+            }
+            
         }
 	}
 
-    void placeBuilding(GameObject building)
+    void displayBuilding(GameObject building)
     {
         Vector3 temp = transform.position + transform.forward * distance;
         Vector3 loc = new Vector3(temp.x, temp.y + height, temp.z);
 
-        GameObject newBuilding = Instantiate(building, loc, transform.rotation);
+        newBuilding = Instantiate(building, loc, transform.rotation);
         newBuilding.transform.parent = transform;
     }
+    void placeBuilding(GameObject building, Vector3 position)
+    {
+        if (Physics.Raycast(position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+        {
+            if (hit.collider.gameObject.tag == "ground")
+            {
+                Instantiate(building, new Vector3(hit.point.x, hit.point.y+1, hit.point.z), building.transform.rotation);
 
+            }
+        }
+    }
 
 }
