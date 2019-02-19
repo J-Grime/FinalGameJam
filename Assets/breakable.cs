@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class breakable : MonoBehaviour {
+public abstract class breakable : health {
 
-    public float hitPoints;
     public GameObject drop;
 
 	
