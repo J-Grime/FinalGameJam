@@ -20,10 +20,16 @@ public class treeGen : MonoBehaviour
         float posZ = transform.position.z + Random.Range(-radius, radius);
         Vector3 randPoint = new Vector3(posX, transform.position.y, posZ);
 
+<<<<<<< HEAD
 
         if (timer > timediff)
         { 
             if (Physics.Raycast(randPoint, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+=======
+        if (Physics.Raycast(randPoint, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+        { 
+            if (hit.collider.gameObject.tag == "ground")
+>>>>>>> 9689a3bd6c182d5904669613e2a38046ad9869c2
             {
                 if (hit.collider.gameObject.tag == "ground")
                 {
