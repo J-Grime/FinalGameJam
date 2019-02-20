@@ -153,7 +153,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -4780,6 +4780,12 @@ MonoBehaviour:
   maxHealth: 10
   hitPoints: 0
   drop: {fileID: 1590019267754994, guid: bc81b25738cc8ec4d8fd34f0b6747567, type: 2}
+  distanceAllowed: 0
+  outlineMaterial: {fileID: 2100000, guid: dc85c4b663ec14346ad16ffedad908c8, type: 2}
+  normalMaterial: {fileID: 21286112443102744, guid: d5d3270eeba4b4a45b3b11997687022d,
+    type: 2}
+  meshRenderer: {fileID: 23310824340075552, guid: d5d3270eeba4b4a45b3b11997687022d,
+    type: 2}
 --- !u!193 &193352529442421722
 Tree:
   m_ObjectHideFlags: 1
