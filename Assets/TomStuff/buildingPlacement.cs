@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class buildingPlacement : MonoBehaviour {
@@ -19,6 +20,8 @@ public class buildingPlacement : MonoBehaviour {
 
     GameObject newBuilding;
 
+    public Canvas buildMenu;
+
     private void Start()
     {
         //BHC = building.GetComponent<buildingHeightCheck>();
@@ -26,6 +29,7 @@ public class buildingPlacement : MonoBehaviour {
         matKeys[0] = "wood";
         matKeys[1] = "rock";
         matKeys[2] = "metal";
+        buildMenu.enabled = false;
     }
 
 
@@ -33,10 +37,24 @@ public class buildingPlacement : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.T))
         {
+            /*
+            if (buildMenu.enabled == false)
+            {
+                GetComponentInParent<cameraLook>().camLock = true;
+                buildMenu.enabled = true;
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                GetComponentInParent<cameraLook>().camLock = false;
+                buildMenu.enabled = false;
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+            */
             displayBuilding(building);
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (BHC != null)
             {
@@ -70,29 +88,35 @@ public class buildingPlacement : MonoBehaviour {
         {
             if (hit.collider.gameObject.tag == "ground")
             {
-                Instantiate(building, new Vector3(hit.point.x, hit.point.y+1, hit.point.z), building.transform.rotation);
-
+                GameObject built = Instantiate(building, new Vector3(hit.point.x, hit.point.y+1, hit.point.z), building.transform.rotation);
+                Destroy(built.GetComponent<buildable>());
+                Destroy(built.GetComponent<buildingHeightCheck>());
+                built.gameObject.GetComponent<Renderer>().material = newBuilding.GetComponent<buildable>().mat;
             }
         }
     }
 
     bool checkMaterials(string[] matKeys)
     {
-        Debug.Log("Mat check start: "+ itemsToString(newBuilding.GetComponent<buildable>().reqMaterials));
+        Debug.Log("Mat check start: " + itemsToString(newBuilding.GetComponent<buildable>().reqMaterials));
 
         foreach (string mat in matKeys)
         {
-            if ((int) InvManager.inventoryHash[mat] >= (int) newBuilding.GetComponent<buildable>().reqMaterials[mat])
+            if ((int)InvManager.inventoryHash[mat] >= (int)newBuilding.GetComponent<buildable>().reqMaterials[mat])
             {
                 Debug.Log("key " + mat + " matches");
-                int tempAmount = (int)InvManager.inventoryHash[mat];
-                int newAmount = tempAmount - (int)newBuilding.GetComponent<buildable>().reqMaterials[mat];
-                InvManager.inventoryHash[mat] = newAmount;
+
             }
             else
             {
                 return false;
             }
+        }
+        foreach (string mat in matKeys)
+        { 
+        int tempAmount = (int)InvManager.inventoryHash[mat];
+        int newAmount = tempAmount - (int)newBuilding.GetComponent<buildable>().reqMaterials[mat];
+        InvManager.inventoryHash[mat] = newAmount;
         }
         return true;
     }

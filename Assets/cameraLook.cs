@@ -8,6 +8,8 @@ public class cameraLook : MonoBehaviour {
     //move later
     public float damage;
 
+    public bool camLock;
+
     public float mouseSensitivity;
     float xAxisClamp;
 
@@ -22,9 +24,14 @@ public class cameraLook : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        
-        rotateCamera();
+        if (camLock)
+        {
 
+        }
+        else
+        {
+            rotateCamera();
+        }
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
