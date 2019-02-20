@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tool : MonoBehaviour {
+public abstract class Tool : MonoBehaviour {
+
     public string toolname;
 	// Use this for initialization
 	void Start () {
@@ -13,4 +14,6 @@ public class Tool : MonoBehaviour {
 	void Update () {
 		
 	}
+    
+    
 }

@@ -13,4 +13,9 @@ public class Torch : Tool{
 	void Update () {
 		
 	}
+    void Primary()
+    {
+
+    }
+    
 }
