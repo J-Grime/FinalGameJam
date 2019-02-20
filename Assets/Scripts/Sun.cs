@@ -14,13 +14,13 @@ public class Sun : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-
+        Vector3 centermap = new Vector3(1000,60,1000);
+        
         //Rotate the sun
-        transform.RotateAround(Vector3.zero,Vector3.right,20f*Time.deltaTime);
-        transform.LookAt(Vector3.zero);
+        transform.RotateAround(centermap,Vector3.right,20f*Time.deltaTime);
+        transform.LookAt(centermap);
         CurrentRotation = transform.rotation;
-        Debug.Log(CurrentRotation+"   "+TargetRotation);
+        //Debug.Log(CurrentRotation+"   "+TargetRotation);
         if(CurrentRotation == TargetRotation)
         {
             Debug.Log("equal");
