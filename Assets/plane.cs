@@ -19,7 +19,7 @@ public class plane : MonoBehaviour {
 	}
 
     void PlaneFly() {
-        if (gameObject.transform.position.z < -150)
+        if (gameObject.transform.position.z > -150)
         {
             transform.Translate(Vector3.right * Time.deltaTime * speed);
 
