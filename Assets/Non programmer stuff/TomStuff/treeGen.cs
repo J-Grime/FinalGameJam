@@ -7,7 +7,7 @@ public class treeGen : MonoBehaviour
 {
     public float timer = 0;
     public float timediff = 0.9f;
-    public Tree baseTree;
+    public Tree[] baseTree;
     Tree newTree;
     RaycastHit hit;
     public float radius;
@@ -33,7 +33,8 @@ public class treeGen : MonoBehaviour
                     {
                         if (hit.collider.gameObject.tag == "ground")
                         {
-                            newTree = Instantiate(baseTree, new Vector3(hit.point.x, hit.point.y, hit.point.z), transform.rotation);
+                            int tree = Random.Range(0, baseTree.Length - 1);
+                            newTree = Instantiate(baseTree[tree], new Vector3(hit.point.x, hit.point.y, hit.point.z), transform.rotation);
                             //newTree.transform.parent = transform;
 
                         }

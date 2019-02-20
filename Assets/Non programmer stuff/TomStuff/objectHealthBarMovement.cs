@@ -5,15 +5,17 @@ using UnityEngine;
 public class objectHealthBarMovement : MonoBehaviour {
 
     RectTransform canvas;
-    public GameObject player;
+    GameObject player;
 
-    private void Start()
+    void Start()
     {
         canvas = GetComponentInChildren<RectTransform>();
+        player = GameObject.FindGameObjectWithTag("player");
     }
 
     // Update is called once per frame
     void Update () {
+        
         canvas.LookAt(player.transform);
 	}
 }
