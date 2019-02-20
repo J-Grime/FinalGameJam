@@ -20,7 +20,7 @@ public class Sun : MonoBehaviour {
         transform.RotateAround(Vector3.zero,Vector3.right,20f*Time.deltaTime);
         transform.LookAt(Vector3.zero);
         CurrentRotation = transform.rotation;
-        Debug.Log(CurrentRotation+"   "+TargetRotation);
+        //Debug.Log(CurrentRotation+"   "+TargetRotation);
         if(CurrentRotation == TargetRotation)
         {
             Debug.Log("equal");
