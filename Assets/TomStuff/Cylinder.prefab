@@ -20,9 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4568861085135084}
   - component: {fileID: 33867171552093480}
-  - component: {fileID: 136445401957955452}
   - component: {fileID: 23292232352259706}
-  - component: {fileID: 114136320367752628}
+  - component: {fileID: 136448141640076432}
+  - component: {fileID: 114546371074568238}
+  - component: {fileID: 114999257356140762}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -84,7 +85,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1918098072163422}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114136320367752628
+--- !u!114 &114546371074568238
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -96,11 +97,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPlace: 0
-  noOfChecks: 0
+  noOfChecks: 10
   willPlace: {fileID: 2100000, guid: 606467b7aed0d794e87399b84b9fce2f, type: 2}
   wontPlace: {fileID: 2100000, guid: 7ec902cad60af7c4aa88b7ceaf5347de, type: 2}
-  testRadius: 2
---- !u!136 &136445401957955452
+  testRadius: 1
+--- !u!114 &114999257356140762
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918098072163422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af6b1b7ae4577b74caf47098926d0392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &136448141640076432
 CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -109,7 +121,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

@@ -8,7 +8,9 @@ public class InventoryManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-
+        inventoryHash.Add("wood", 0);
+        inventoryHash.Add("rock", 0);
+        inventoryHash.Add("metal", 0);
 	}
 	
 	// Update is called once per frame
@@ -56,10 +58,12 @@ public class InventoryManager : MonoBehaviour {
     {
         
         string InventoryOutput = "";
-        
+
+        Debug.Log(inventoryHash.Keys.Count);
+
         foreach (string key in inventoryHash.Keys)
         {
-            InventoryOutput += key + " " + (int) inventoryHash[key] + "\n";
+            InventoryOutput += key + " " + (int) inventoryHash[key] + ", ";
         }
 
         Debug.Log(InventoryOutput);

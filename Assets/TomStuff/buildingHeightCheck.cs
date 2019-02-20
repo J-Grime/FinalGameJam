@@ -41,14 +41,20 @@ public class buildingHeightCheck : MonoBehaviour {
 
     void generateHeightData()
     {
-        float posX = transform.position.x + Random.Range(-testRadius, testRadius);
-        float posZ = transform.position.z + Random.Range(-testRadius, testRadius);
-        Vector3 randPoint = new Vector3(posX, transform.position.y, posZ);
+        
         for (int i = 0; i < noOfChecks; i++)
         {
+            float posX = transform.position.x + Random.Range(-testRadius, testRadius);
+            float posZ = transform.position.z + Random.Range(-testRadius, testRadius);
+            Vector3 randPoint = new Vector3(posX, transform.position.y, posZ);
+
             if (Physics.Raycast(randPoint, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
             {
-                checkHeights[i] = hit.distance;
+                if(hit.collider.tag == "ground")
+                {
+                    checkHeights[i] = hit.distance;
+                }
+                
             }
         }
     }
@@ -103,11 +109,11 @@ public class buildingHeightCheck : MonoBehaviour {
         float max = Max(heights);
         float min = Min(heights);
 
-        float range = max - min;
+        double range = max - min;
 
-       // Debug.Log("MYAR: " + range + ", max: "+ max + ", min: "+ min);
+        //Debug.Log("MYAR: " + range + ", max: "+ max + ", min: "+ min);
 
-        if (range < 3)
+        if (range < .1)
         {
             return placeable = true;
         }
@@ -116,6 +122,7 @@ public class buildingHeightCheck : MonoBehaviour {
             return placeable;
         }   
     }
+
     string Heights(float[] heights)
     {
         string heightString = "";

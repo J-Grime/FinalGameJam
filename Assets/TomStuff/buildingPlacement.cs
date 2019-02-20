@@ -4,27 +4,110 @@ using UnityEngine;
 
 public class buildingPlacement : MonoBehaviour {
 
+    string[] matKeys = new string[3];
+
     public GameObject building;
 
     public float height;
     public float distance;
-	
-	// Update is called once per frame
-	void Update () {
+
+    private buildingHeightCheck BHC = null;
+
+    private InventoryManager InvManager = null;
+
+    RaycastHit hit;
+
+    GameObject newBuilding;
+
+    private void Start()
+    {
+        //BHC = building.GetComponent<buildingHeightCheck>();
+        InvManager = transform.parent.GetComponentInParent<InventoryManager>();
+        matKeys[0] = "wood";
+        matKeys[1] = "rock";
+        matKeys[2] = "metal";
+    }
+
+
+    // Update is called once per frame
+    void Update () {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            placeBuilding(building);
+            displayBuilding(building);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            if (BHC != null)
+            {
+
+                //Debug.Log(BHC.canPlace);
+
+                bool materialCheck = checkMaterials(matKeys);
+
+                Debug.Log("MatCheck: " + materialCheck);
+
+                if (BHC.canPlace && materialCheck)
+                {
+                    placeBuilding(building, newBuilding.transform.position);
+                }
+            }
         }
 	}
 
-    void placeBuilding(GameObject building)
+    void displayBuilding(GameObject building)
     {
         Vector3 temp = transform.position + transform.forward * distance;
         Vector3 loc = new Vector3(temp.x, temp.y + height, temp.z);
 
-        GameObject newBuilding = Instantiate(building, loc, transform.rotation);
+        newBuilding = Instantiate(building, loc, transform.rotation);
         newBuilding.transform.parent = transform;
+        BHC = newBuilding.GetComponent<buildingHeightCheck>();
+    }
+    void placeBuilding(GameObject building, Vector3 position)
+    {
+        if (Physics.Raycast(position, transform.TransformDirection(Vector3.down), out hit, Mathf.Infinity))
+        {
+            if (hit.collider.gameObject.tag == "ground")
+            {
+                Instantiate(building, new Vector3(hit.point.x, hit.point.y+1, hit.point.z), building.transform.rotation);
+
+            }
+        }
     }
 
+    bool checkMaterials(string[] matKeys)
+    {
+        Debug.Log("Mat check start: "+ itemsToString(newBuilding.GetComponent<buildable>().reqMaterials));
+
+        foreach (string mat in matKeys)
+        {
+            if ((int) InvManager.inventoryHash[mat] >= (int) newBuilding.GetComponent<buildable>().reqMaterials[mat])
+            {
+                Debug.Log("key " + mat + " matches");
+                int tempAmount = (int)InvManager.inventoryHash[mat];
+                int newAmount = tempAmount - (int)newBuilding.GetComponent<buildable>().reqMaterials[mat];
+                InvManager.inventoryHash[mat] = newAmount;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public string itemsToString(Hashtable inv)
+    {
+
+        string InventoryOutput = "";
+
+        foreach (string key in inv.Keys)
+        {
+            InventoryOutput += key + " " + (int)inv[key] + ", ";
+        }
+
+        return InventoryOutput;
+    }
 
 }
