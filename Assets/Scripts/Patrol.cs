@@ -39,7 +39,7 @@ public class Patrol : MonoBehaviour {
             {
                 nextSpot += 1;
                 waitTime = startWaitTime;
-                Debug.Log(nextSpot);
+                //Debug.Log(nextSpot);
 
             }
             else

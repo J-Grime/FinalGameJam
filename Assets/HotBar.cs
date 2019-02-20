@@ -102,5 +102,6 @@ public class HotBar : MonoBehaviour
             }
             else { torchLight.enabled = false; }
         }
+        else { torchLight.enabled = false; }
     }
 }

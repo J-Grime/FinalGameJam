@@ -34,7 +34,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4047892381382128}
-  - component: {fileID: 114773794628245256}
+  - component: {fileID: 114917931997690738}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1789382409392522}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 109.40132, y: 7.34237, z: 196.08119}
+  m_LocalPosition: {x: 859.61255, y: 88.858696, z: 1043.4442}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4047892381382128}
@@ -235,7 +235,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -8072,7 +8072,7 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
---- !u!114 &114773794628245256
+--- !u!114 &114917931997690738
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -8080,10 +8080,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1139615837009088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e60917e9540d8d45bfcacea40ba453a, type: 3}
+  m_Script: {fileID: 11500000, guid: 938bf717de8934847a8a146bc5d66a38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!193 &193352529442421722
 Tree:
   m_ObjectHideFlags: 1
