@@ -8,7 +8,10 @@ TagManager:
   - ground
   - Target
   - Guard
-  - player
+  - campfire
+  - radio
+  - SOS
+  - Flare
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Minimap
   - Obstacle
   - Target
-  - ViewModel
+  - 
   - 
   - 
   - 
