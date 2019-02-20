@@ -3,43 +3,47 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HotBar : MonoBehaviour {
+public class HotBar : MonoBehaviour
+{
     public int selectedSpace;
-    public Text spacetext;
+    // public Text spacetext;
     public Torch torch1;
     public Axe axe1;
     public Light torchLight;
-    public Text currentToolText;
+    //public Text currentToolText;
     public Tool[] listOfTools;
     Tool currentTool;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         selectedSpace = 4;
-        
+
         listOfTools = new Tool[9];
         listOfTools[0] = torch1;
         listOfTools[1] = axe1;
-        listOfTools[2] = axe1;
-        listOfTools[3] = axe1;
-        listOfTools[4] = axe1;
-        listOfTools[5] = axe1;
-        listOfTools[6] = axe1;
-        listOfTools[7] = axe1;
-        listOfTools[8] = axe1;
+        listOfTools[2] = null;
+        listOfTools[3] = null;
+        listOfTools[4] = null;
+        listOfTools[5] = null;
+        listOfTools[6] = null;
+        listOfTools[7] = null;
+        listOfTools[8] = null;
         currentTool = listOfTools[selectedSpace];
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update()
+    {
         HotbarCycle();
         currentTool = listOfTools[selectedSpace];
-        currentToolText.text = currentTool.GetComponent<Tool>().toolname;
-        UseTool();
-	}
 
-    void HotbarCycle() {
+        UseTool();
+    }
+
+    void HotbarCycle()
+    {
         int lastSpace;
-        if (Input.mouseScrollDelta.y < 0)
+        if (Input.mouseScrollDelta.y > 0)
         {
             lastSpace = selectedSpace;
             if (selectedSpace > 0)
@@ -52,7 +56,7 @@ public class HotBar : MonoBehaviour {
             }
             CheckSwitch(selectedSpace);
         }//scolling down
-        if (Input.mouseScrollDelta.y > 0)
+        if (Input.mouseScrollDelta.y < 0)
         {
             lastSpace = selectedSpace;
             if (selectedSpace < 8)
@@ -65,7 +69,7 @@ public class HotBar : MonoBehaviour {
             }
             CheckSwitch(selectedSpace);
         }//scrolling up
-        spacetext.text = "count:" + (selectedSpace+1).ToString();
+        //spacetext.text = "count:" + (selectedSpace+1).ToString();
 
         if (Input.GetKey("1")) { lastSpace = selectedSpace; selectedSpace = 0; CheckSwitch(lastSpace); }
         if (Input.GetKey("2")) { lastSpace = selectedSpace; selectedSpace = 1; CheckSwitch(lastSpace); }
@@ -79,20 +83,24 @@ public class HotBar : MonoBehaviour {
     }
     void CheckSwitch(int last)
     {
-        if(listOfTools[last].GetComponent<Tool>().toolname != currentTool.GetComponent<Tool>().toolname)
+        if (currentTool != null)
         {
-           // SwitchTool();
+            //if (listOfTools[last].GetComponent<Tool>().toolname != currentTool.GetComponent<Tool>().toolname)
+            // {
+            // SwitchTool();
+            //}
         }
     }
-    void SwitchTool(Tool changeto)
-    {
-        currentTool = changeto;
-    }
+
     void UseTool()
     {
-        if (currentTool.GetComponent<Tool>().toolname == "Torch")
+        if (currentTool != null)
         {
-            torchLight.enabled = true;
-        }else { torchLight.enabled = false; }
+            if (currentTool.GetComponent<Tool>().toolname == "Torch")
+            {
+                torchLight.enabled = true;
+            }
+            else { torchLight.enabled = false; }
+        }
     }
 }
