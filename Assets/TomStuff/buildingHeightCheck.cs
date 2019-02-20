@@ -111,9 +111,9 @@ public class buildingHeightCheck : MonoBehaviour {
 
         double range = max - min;
 
-        Debug.Log("MYAR: " + range + ", max: "+ max + ", min: "+ min);
+        //Debug.Log("MYAR: " + range + ", max: "+ max + ", min: "+ min);
 
-        if (range < .5)
+        if (range < .1)
         {
             return placeable = true;
         }

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class buildingPlacement : MonoBehaviour {
 
+    string[] matKeys = new string[3];
+
     public GameObject building;
 
     public float height;
     public float distance;
 
-    private buildingHeightCheck BHC;
+    private buildingHeightCheck BHC = null;
+
+    private InventoryManager InvManager = null;
 
     RaycastHit hit;
 
@@ -17,7 +21,11 @@ public class buildingPlacement : MonoBehaviour {
 
     private void Start()
     {
-        BHC = building.GetComponent<buildingHeightCheck>();
+        //BHC = building.GetComponent<buildingHeightCheck>();
+        InvManager = transform.parent.GetComponentInParent<InventoryManager>();
+        matKeys[0] = "wood";
+        matKeys[1] = "rock";
+        matKeys[2] = "metal";
     }
 
 
@@ -30,12 +38,20 @@ public class buildingPlacement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.E))
         {
-            Debug.Log(BHC.canPlace);
-            if (BHC.canPlace)
+            if (BHC != null)
             {
-                placeBuilding(building, newBuilding.transform.position);
+
+                //Debug.Log(BHC.canPlace);
+
+                bool materialCheck = checkMaterials(matKeys);
+
+                Debug.Log("MatCheck: " + materialCheck);
+
+                if (BHC.canPlace && materialCheck)
+                {
+                    placeBuilding(building, newBuilding.transform.position);
+                }
             }
-            
         }
 	}
 
@@ -46,6 +62,7 @@ public class buildingPlacement : MonoBehaviour {
 
         newBuilding = Instantiate(building, loc, transform.rotation);
         newBuilding.transform.parent = transform;
+        BHC = newBuilding.GetComponent<buildingHeightCheck>();
     }
     void placeBuilding(GameObject building, Vector3 position)
     {
@@ -57,6 +74,40 @@ public class buildingPlacement : MonoBehaviour {
 
             }
         }
+    }
+
+    bool checkMaterials(string[] matKeys)
+    {
+        Debug.Log("Mat check start: "+ itemsToString(newBuilding.GetComponent<buildable>().reqMaterials));
+
+        foreach (string mat in matKeys)
+        {
+            if ((int) InvManager.inventoryHash[mat] >= (int) newBuilding.GetComponent<buildable>().reqMaterials[mat])
+            {
+                Debug.Log("key " + mat + " matches");
+                int tempAmount = (int)InvManager.inventoryHash[mat];
+                int newAmount = tempAmount - (int)newBuilding.GetComponent<buildable>().reqMaterials[mat];
+                InvManager.inventoryHash[mat] = newAmount;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public string itemsToString(Hashtable inv)
+    {
+
+        string InventoryOutput = "";
+
+        foreach (string key in inv.Keys)
+        {
+            InventoryOutput += key + " " + (int)inv[key] + ", ";
+        }
+
+        return InventoryOutput;
     }
 
 }
