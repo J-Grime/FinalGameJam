@@ -111,7 +111,7 @@ public class FieldOfView : MonoBehaviour {
                 RaycastHit Hit;
                 if (Physics.Raycast(transform.position, dirToTarget, out Hit, 1000))
                 {
-                    if (Hit.collider.gameObject.name == "Player")
+                    if (Hit.collider.gameObject.name == "player")
                     {
                         
                         

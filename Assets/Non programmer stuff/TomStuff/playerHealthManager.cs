@@ -11,9 +11,10 @@ public class playerHealthManager : health {
             Debug.Log("Your ded");
         }
 	}
-
     public void damage(float damage)
     {
         hitPoints -= damage;
     }
+
+
 }

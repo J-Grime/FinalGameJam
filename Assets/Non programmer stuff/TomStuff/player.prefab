@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 114230902163066762}
   - component: {fileID: 114995779268201414}
   - component: {fileID: 114724617493326278}
+  - component: {fileID: 114422475647759542}
   m_Layer: 0
   m_Name: player
   m_TagString: player
@@ -244,6 +245,18 @@ MonoBehaviour:
   sprintKey: 304
   grounded: 0
   isJumping: 0
+--- !u!114 &114422475647759542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692376800639010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5594c594cf6830e468fdd1362990131d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newItem: {fileID: 0}
 --- !u!114 &114529097738088428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -256,7 +269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 4112590020352156}
-  damage: 5
+  damage: 1
   camLock: 0
   mouseSensitivity: 5
 --- !u!114 &114599472655466844
