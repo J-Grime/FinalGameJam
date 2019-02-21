@@ -42,7 +42,7 @@ public class HotbarIcon : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         selectedItem = HB.selectedSpace;
-       // icons[selectedItem].color = Color.white;
+       icons[selectedItem].color = Color.white;
         MoveIcon(selectedItem);
         for (int i = 0; i < icons.Length; i++)
         {
@@ -51,7 +51,7 @@ public class HotbarIcon : MonoBehaviour {
 
             if (i!= selectedItem)
             {
-              // icons[i].color = Color.grey;
+               icons[i].color = Color.grey;
                icons[i].rectTransform.position = StartTransforms[i];
             }
         }
