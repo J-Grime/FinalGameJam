@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class HotBar : MonoBehaviour
 {
+    public GameObject hands;
+    
+    public GameObject torchGO;
+    public GameObject axeGO;
     public int selectedSpace;
     // public Text spacetext;
     public Torch torch1;
@@ -16,18 +20,14 @@ public class HotBar : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        
         selectedSpace = 4;
 
+       
         listOfTools = new Tool[9];
         listOfTools[0] = torch1;
         listOfTools[1] = axe1;
-        listOfTools[2] = null;
-        listOfTools[3] = null;
-        listOfTools[4] = null;
-        listOfTools[5] = null;
-        listOfTools[6] = null;
-        listOfTools[7] = null;
-        listOfTools[8] = null;
+        
         currentTool = listOfTools[selectedSpace];
     }
 
@@ -49,12 +49,14 @@ public class HotBar : MonoBehaviour
             if (selectedSpace > 0)
             {
                 selectedSpace--;
+                
             }
             else if (selectedSpace == 0)
             {
                 selectedSpace = 8;
+                
             }
-            CheckSwitch(selectedSpace);
+            CheckSwitch();
         }//scolling down
         if (Input.mouseScrollDelta.y < 0)
         {
@@ -62,34 +64,44 @@ public class HotBar : MonoBehaviour
             if (selectedSpace < 8)
             {
                 selectedSpace++;
+                
             }
             else if (selectedSpace == 8)
             {
                 selectedSpace = 0;
+                
             }
-            CheckSwitch(selectedSpace);
+            CheckSwitch();
         }//scrolling up
         //spacetext.text = "count:" + (selectedSpace+1).ToString();
 
-        if (Input.GetKey("1")) { lastSpace = selectedSpace; selectedSpace = 0; CheckSwitch(lastSpace); }
-        if (Input.GetKey("2")) { lastSpace = selectedSpace; selectedSpace = 1; CheckSwitch(lastSpace); }
-        if (Input.GetKey("3")) { lastSpace = selectedSpace; selectedSpace = 2; CheckSwitch(lastSpace); }
-        if (Input.GetKey("4")) { lastSpace = selectedSpace; selectedSpace = 3; CheckSwitch(lastSpace); }
-        if (Input.GetKey("5")) { lastSpace = selectedSpace; selectedSpace = 4; CheckSwitch(lastSpace); }
-        if (Input.GetKey("6")) { lastSpace = selectedSpace; selectedSpace = 5; CheckSwitch(lastSpace); }
-        if (Input.GetKey("7")) { lastSpace = selectedSpace; selectedSpace = 6; CheckSwitch(lastSpace); }
-        if (Input.GetKey("8")) { lastSpace = selectedSpace; selectedSpace = 7; CheckSwitch(lastSpace); }
-        if (Input.GetKey("9")) { lastSpace = selectedSpace; selectedSpace = 8; CheckSwitch(lastSpace); }
+        if (Input.GetKey("1")) { selectedSpace = 0; CheckSwitch(); }
+        if (Input.GetKey("2")) { selectedSpace = 1; CheckSwitch(); }
+        if (Input.GetKey("3")) { selectedSpace = 2; CheckSwitch(); }
+        if (Input.GetKey("4")) { selectedSpace = 3; CheckSwitch(); }
+        if (Input.GetKey("5")) { selectedSpace = 4; CheckSwitch(); }
+        if (Input.GetKey("6")) { selectedSpace = 5; CheckSwitch(); }
+        if (Input.GetKey("7")) { selectedSpace = 6; CheckSwitch(); }
+        if (Input.GetKey("8")) { selectedSpace = 7; CheckSwitch(); }
+        if (Input.GetKey("9")) { selectedSpace = 8; CheckSwitch(); }
     }
-    void CheckSwitch(int last)
+    void CheckSwitch()
     {
-        if (currentTool != null)
+        currentTool = listOfTools[selectedSpace];
+        if (currentTool == null)
         {
-            //if (listOfTools[last].GetComponent<Tool>().toolname != currentTool.GetComponent<Tool>().toolname)
-            // {
-            // SwitchTool();
-            //}
+            hands.SetActive(true);
+            torchGO.SetActive(false);
+            axeGO.SetActive(false);
         }
+        else
+        {
+            hands.SetActive(false);
+            if (currentTool.GetComponent<Tool>().toolname == "Torch") { torchGO.SetActive(true); } else { torchGO.SetActive(false); }
+            if (currentTool.GetComponent<Tool>().toolname == "Axe") { axeGO.SetActive(true); } else { axeGO.SetActive(false); }
+
+        }
+
     }
 
     void UseTool()
