@@ -8,6 +8,6 @@ public class testBuildable : buildable {
     void Start () {
         reqMaterials.Add("wood", 6);
         reqMaterials.Add("rock", 6);
-        reqMaterials.Add("metal", 0);
+        reqMaterials.Add("gunpowder", 0);
 	}
 }

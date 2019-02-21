@@ -23,7 +23,7 @@ public class Sun : MonoBehaviour {
         //Debug.Log(CurrentRotation+"   "+TargetRotation);
         if(CurrentRotation == TargetRotation)
         {
-            Debug.Log("equal");
+            //Debug.Log("equal");
             Plane.SetActive(true);
         }
 	}

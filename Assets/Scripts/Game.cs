@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Game : MonoBehaviour {
+    public Object scenetoload;
     GameObject[] campfires;
     GameObject[] SOS;
     GameObject[] Radio;
@@ -33,9 +36,11 @@ public class Game : MonoBehaviour {
         { score += 15; }
         else { score += SOS.Length * 5; }
 
+        if (Radio.Length >= 1)
+        { score += 75; }
 
-
-
+        if (Flare.Length >= 1)
+        { score += 25; }
 
 
 
@@ -47,7 +52,11 @@ public class Game : MonoBehaviour {
 
 
         if (score >= 100)
-        { Debug.Log("Rescued"); }
-        gameObject.SetActive(false);
-	}
+        {
+            Debug.Log("Rescued");
+            SceneManager.LoadScene(scenetoload.name);
+        }
+        score = 0;
+        this.enabled = false;
+    }
 }
