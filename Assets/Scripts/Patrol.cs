@@ -10,11 +10,13 @@ public class Patrol : MonoBehaviour {
     public int nextSpot;
     bool goBack;
     public FieldOfView Script;
+    public Animator ani;
 
     // Use this for initialization
     void Start() {
         waitTime = startWaitTime;
         nextSpot = 0;
+        ani = GetComponentInChildren<Animator>();
     }
 
     // Update is called once per frame
@@ -22,6 +24,7 @@ public class Patrol : MonoBehaviour {
         Script = GameObject.FindObjectOfType(typeof(FieldOfView)) as FieldOfView;
         goBack = Script.GetComponent<FieldOfView>().goBack;
         transform.position = Vector3.MoveTowards(transform.position, moveSpots[nextSpot].position, speed * Time.deltaTime);
+        ani.SetBool("walking", true);
         if (Vector3.Distance(transform.position, moveSpots[nextSpot].position) < 0.2f)
         {
             if (nextSpot == moveSpots.Length - 1)

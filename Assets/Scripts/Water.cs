@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Water : MonoBehaviour {
-    
+    public GameObject player;
 	// Use this for initialization
 	void Start () {
 		
@@ -19,11 +19,11 @@ public class Water : MonoBehaviour {
     {
         if (other.tag == "player")
         {
-            
-            other.GetComponent<playerHealthManager>().damage(5);
+            Debug.Log("water"); 
+            player.GetComponent<playerHealthManager>().damage(5);
             StartCoroutine(wait());
         }
-    }
+            }
     IEnumerator wait()
 
     {
