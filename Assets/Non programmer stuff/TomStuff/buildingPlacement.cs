@@ -30,7 +30,7 @@ public class buildingPlacement : MonoBehaviour {
         InvManager = transform.parent.GetComponentInParent<InventoryManager>();
         matKeys[0] = "wood";
         matKeys[1] = "rock";
-        matKeys[2] = "metal";
+        matKeys[2] = "gunpowder";
         buildMenu.enabled = false;
     }
 

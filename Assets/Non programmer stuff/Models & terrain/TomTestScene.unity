@@ -3283,6 +3283,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 270e9519a3597334b83047914b2d478a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1284552601 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1692376800639010, guid: 7bd4ba5fc46041d42b12ac80c01fc8b5,
+    type: 2}
+  m_PrefabInternal: {fileID: 54624075}
+--- !u!114 &1284552602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1284552601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5594c594cf6830e468fdd1362990131d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newItem: {fileID: 0}
 --- !u!4 &1308065532 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4629281921083626, guid: 39d0de03b167ca249812172733b0b1ae,
@@ -3878,7 +3895,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: spear
+  m_Text: flare
 --- !u!222 &1575012544
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4242,7 +4259,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1816632688
 RectTransform:
   m_ObjectHideFlags: 0
