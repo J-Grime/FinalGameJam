@@ -9,13 +9,19 @@ public class cameraLook : MonoBehaviour {
     public float damage;
 
     public bool camLock;
-
+    public GameObject HBGO;
+    public HotBar HB;
     public float mouseSensitivity;
     float xAxisClamp;
+    public int mult;
+    public Tool tooool;
 
     Ray ray;
     RaycastHit hit;
-
+    private void Start()
+    {
+        HB = HBGO.GetComponent<HotBar>();
+    }
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -24,6 +30,10 @@ public class cameraLook : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
+        tooool = HB.currentTool;
+
+
+      //  if (HB.currentTool == null) { Debug.Log("No tool"); }
         if (camLock)
         {
 
@@ -33,13 +43,18 @@ public class cameraLook : MonoBehaviour {
             rotateCamera();
         }
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (HB.currentTool == null) { mult = 1; } else { mult =  HB.currentTool.GetComponent<Tool>().mult; }
+
         if (Physics.Raycast(ray, out hit))
         {
             if (Input.GetMouseButtonDown(0))
             {
                if (hit.collider.gameObject.GetComponent<breakable>() != null)
                {
-                    hit.collider.gameObject.GetComponent<breakable>().damage(damage, playerBody.gameObject);
+                   
+                    
+                    hit.collider.gameObject.GetComponent<breakable>().damage(damage, playerBody.gameObject,mult);
                }
             }
         }

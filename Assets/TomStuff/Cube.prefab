@@ -112,7 +112,7 @@ MonoBehaviour:
   noOfChecks: 10
   willPlace: {fileID: 2100000, guid: 606467b7aed0d794e87399b84b9fce2f, type: 2}
   wontPlace: {fileID: 2100000, guid: 7ec902cad60af7c4aa88b7ceaf5347de, type: 2}
-  testRadius: 4
+  testRadius: 2
 --- !u!114 &114582533319035314
 MonoBehaviour:
   m_ObjectHideFlags: 1

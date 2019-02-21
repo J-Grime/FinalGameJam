@@ -16,10 +16,14 @@ public abstract class breakable : health {
         }
 	}
 
-    public void damage(float hitDamage, GameObject player)
+    public void damage(float hitDamage, GameObject player,int dropMult)
     {
         hitPoints -= hitDamage;
         Debug.Log("hit");
-        player.GetComponent<InventoryManager>().itemPickup(drop);
+        for (int i = 0;i<dropMult;i++)
+        {
+            player.GetComponent<InventoryManager>().itemPickup(drop);
+        }
+        
     }
 }
