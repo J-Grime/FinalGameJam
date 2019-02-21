@@ -34,14 +34,7 @@ public class cameraLook : MonoBehaviour {
 
 
       //  if (HB.currentTool == null) { Debug.Log("No tool"); }
-        if (camLock)
-        {
-
-        }
-        else
-        {
             rotateCamera();
-        }
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (HB.currentTool == null) { mult = 1; } else { mult =  HB.currentTool.GetComponent<Tool>().mult; }
