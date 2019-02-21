@@ -33,7 +33,7 @@ public class cameraLook : MonoBehaviour {
         tooool = HB.currentTool;
 
 
-        if (HB.currentTool == null) { Debug.Log("No tool"); }
+      //  if (HB.currentTool == null) { Debug.Log("No tool"); }
         if (camLock)
         {
 
