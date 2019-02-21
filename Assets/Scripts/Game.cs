@@ -54,7 +54,7 @@ public class Game : MonoBehaviour {
         if (score >= 100)
         {
             Debug.Log("Rescued");
-            SceneManager.LoadScene(scenetoload.name);
+            //SceneManager.LoadScene(scenetoload.name);
         }
         score = 0;
         this.enabled = false;
