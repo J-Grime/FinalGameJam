@@ -8,6 +8,7 @@ public class testUIManager : MonoBehaviour
     public Text woodCount;
     public Text stoneCount;
     public Text healthCount;
+    public Text GpowderCount;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,14 @@ public class testUIManager : MonoBehaviour
         else
         {
            stoneCount.text = "Rock: 0";
+        }
+        if (gameObject.GetComponent<InventoryManager>().inventoryHash["gunpowder"] != null)
+        {
+            GpowderCount.text = "Gunpowder: " + gameObject.GetComponent<InventoryManager>().inventoryHash["gunpowder"];
+        }
+        else
+        {
+            GpowderCount.text = "Gunpowder: 0";
         }
 
         healthCount.text = "health: " + gameObject.GetComponent<playerHealthManager>().hitPoints;

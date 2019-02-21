@@ -10,7 +10,7 @@ public class InventoryManager : MonoBehaviour {
     void Start () {
         inventoryHash.Add("wood", 0);
         inventoryHash.Add("rock", 0);
-        inventoryHash.Add("metal", 0);
+        inventoryHash.Add("gunpowder", 0);
 	}
 	
 	// Update is called once per frame

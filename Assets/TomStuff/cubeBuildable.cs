@@ -8,6 +8,6 @@ public class cubeBuildable : buildable {
     {
         reqMaterials.Add("wood", 12);
         reqMaterials.Add("rock", 15);
-        reqMaterials.Add("metal", 0);
+        reqMaterials.Add("gunpowder", 0);
     }
 }

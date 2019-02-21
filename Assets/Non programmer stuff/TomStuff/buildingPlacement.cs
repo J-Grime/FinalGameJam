@@ -7,6 +7,8 @@ public class buildingPlacement : MonoBehaviour {
 
     string[] matKeys = new string[3];
 
+    bool displayingBuilding = false;
+
     public GameObject building;
 
     public float height;
@@ -37,7 +39,6 @@ public class buildingPlacement : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            /*
             if (buildMenu.enabled == false)
             {
                 GetComponentInParent<cameraLook>().camLock = true;
@@ -46,41 +47,48 @@ public class buildingPlacement : MonoBehaviour {
             }
             else
             {
+                hideItem(newBuilding);
                 GetComponentInParent<cameraLook>().camLock = false;
                 buildMenu.enabled = false;
                 Cursor.lockState = CursorLockMode.Locked;
             }
-            */
-            displayBuilding(building);
+            //displayBuilding(building);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
         {
             if (BHC != null)
             {
+                if (displayingBuilding)
+                { 
+                    //Debug.Log(BHC.canPlace);
 
-                //Debug.Log(BHC.canPlace);
+                    bool materialCheck = checkMaterials(matKeys);
 
-                bool materialCheck = checkMaterials(matKeys);
+                    Debug.Log("MatCheck: " + materialCheck);
 
-                Debug.Log("MatCheck: " + materialCheck);
-
-                if (BHC.canPlace && materialCheck)
-                {
-                    placeBuilding(building, newBuilding.transform.position);
+                    if (BHC.canPlace && materialCheck)
+                    {
+                        placeBuilding(building, newBuilding.transform.position);
+                        Destroy(newBuilding);
+                        displayingBuilding = false;
+                    }
                 }
             }
         }
 	}
 
-    void displayBuilding(GameObject building)
+    public void displayBuilding(GameObject building)
     {
+        displayingBuilding = true;
         Vector3 temp = transform.position + transform.forward * distance;
         Vector3 loc = new Vector3(temp.x, temp.y + height, temp.z);
 
         newBuilding = Instantiate(building, loc, transform.rotation);
         newBuilding.transform.parent = transform;
         BHC = newBuilding.GetComponent<buildingHeightCheck>();
+        Cursor.lockState = CursorLockMode.Locked;
+        GetComponentInParent<cameraLook>().camLock = false;
     }
     void placeBuilding(GameObject building, Vector3 position)
     {
@@ -133,5 +141,12 @@ public class buildingPlacement : MonoBehaviour {
 
         return InventoryOutput;
     }
-
+    void hideItem(GameObject CurrentBuilding)
+    {
+        if (displayingBuilding)
+        {
+            Destroy(CurrentBuilding);
+        }
+        else { }
+    }
 }
