@@ -97,10 +97,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canPlace: 0
-  noOfChecks: 10
+  noOfChecks: 20
   willPlace: {fileID: 2100000, guid: 606467b7aed0d794e87399b84b9fce2f, type: 2}
   wontPlace: {fileID: 2100000, guid: 7ec902cad60af7c4aa88b7ceaf5347de, type: 2}
-  testRadius: 1
+  testRadius: 2
 --- !u!114 &114999257356140762
 MonoBehaviour:
   m_ObjectHideFlags: 1

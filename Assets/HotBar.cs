@@ -16,7 +16,7 @@ public class HotBar : MonoBehaviour
     public Light torchLight;
     //public Text currentToolText;
     public Tool[] listOfTools;
-    Tool currentTool;
+    public Tool currentTool;
     // Use this for initialization
     void Start()
     {
