@@ -15,7 +15,7 @@ public class damagePlayerTest : MonoBehaviour {
 	}
     private void OnTriggerEnter(Collider collision)
     { 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "player")
         {
             collision.gameObject.GetComponent<playerHealthManager>().damage(10);
         }
