@@ -12,6 +12,8 @@ TagManager:
   - radio
   - SOS
   - Flare
+  - player
+  - suitcase
   layers:
   - Default
   - TransparentFX
