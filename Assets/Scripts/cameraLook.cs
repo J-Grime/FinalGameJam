@@ -30,7 +30,7 @@ public class cameraLook : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        tooool = HB.currentTool;
+        //tooool = HB.currentTool;
 
 
       //  if (HB.currentTool == null) { Debug.Log("No tool"); }
